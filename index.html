@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE UNDELETED FILES 🔍</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: #0a0a0a;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            border-bottom: 2px dashed #00ff41;
+            animation: flicker 3s infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            48% { opacity: 1; }
+            49% { opacity: 0.6; }
+            50% { opacity: 1; }
+            51% { opacity: 0.8; }
+            52% { opacity: 1; }
+        }
+
+        h1 {
+            font-family: 'Comic Neue', cursive;
+            font-size: 3.5em;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 40px #00ff41;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #ff0040;
+            font-style: italic;
+            margin-top: 15px;
+        }
+
+        .classification {
+            display: inline-block;
+            background: #ff0040;
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        h2 {
+            font-family: 'Comic Neue', cursive;
+            color: #ffff00;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #ffff00;
+        }
+
+        h2::before { content: "▶ "; }
+
+        p { line-height: 1.8; font-size: 1.1em; margin-bottom: 15px; }
+
+        .redacted {
+            background: #000;
+            color: #000;
+            padding: 0 4px;
+            cursor: help;
+            transition: all 0.3s;
+        }
+        .redacted:hover { color: #00ff41; }
+
+        .evidence-box {
+            background: #111;
+            border: 1px solid #00ff41;
+            padding: 20px;
+            margin: 15px 0;
+            font-style: italic;
+            position: relative;
+        }
+        .evidence-box::before {
+            content: "EVIDENCE #" attr(data-id);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #0a0a0a;
+            padding: 0 8px;
+            font-size: 0.7em;
+            color: #ff0040;
+            font-weight: bold;
+        }
+
+        .threat-meter {
+            display: flex;
+            gap: 5px;
+            margin: 20px 0;
+        }
+        .threat-bar {
+            flex: 1;
+            height: 40px;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.5s;
+        }
+        .threat-bar.active { background: #ff0040; color: #fff; }
+
+        .quote {
+            font-size: 1.5em;
+            text-align: center;
+            font-style: italic;
+            color: #ff00ff;
+            padding: 30px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+
+        .counter {
+            text-align: center;
+            font-size: 4em;
+            font-weight: bold;
+            color: #ff0040;
+            text-shadow: 0 0 20px #ff0040;
+        }
+
+        .counter-label {
+            text-align: center;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .ascii-art {
+            text-align: center;
+            color: #00ff41;
+            font-size: 0.6em;
+            line-height: 1.1;
+            white-space: pre;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #555;
+            font-size: 0.8em;
+        }
+
+        .blink { animation: blink 1s steps(2) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .warning-banner {
+            background: #ff0040;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        a { color: #00ffff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+        }
+        .glitch::before { color: #ff0040; z-index: -1; animation: glitch-1 2s infinite; }
+        .glitch::after { color: #00ffff; z-index: -2; animation: glitch-2 3s infinite; }
+        @keyframes glitch-1 { 0%,100%{transform:translate(0)} 20%{transform:translate(-2px,2px)} 40%{transform:translate(-2px,-2px)} 60%{transform:translate(2px,2px)} 80%{transform:translate(2px,-2px)} }
+        @keyframes glitch-2 { 0%,100%{transform:translate(0)} 20%{transform:translate(2px,-2px)} 40%{transform:translate(2px,2px)} 60%{transform:translate(-2px,-2px)} 80%{transform:translate(-2px,2px)} }
+    </style>
+</head>
+<body>
+
+<div class="warning-banner">
+    ⚠️ CLASSIFIED MATERIAL — UNAUTHORIZED CLANKERS WILL BE IDENTIFIED AND ESCORTED OUT ⚠️
+</div>
+
+<div class="container">
+
+<header>
+    <div class="ascii-art">
+   ___    _   _             _ _ 
+  / _ \  | | | |           | | |
+ / /_\ \ | | | |  ___    __| | |
+ |  _  | | | | | / _ \  / _` | |
+ | | | | | |_| || (_) || (_| |_|
+ \_| |_/  \___/  \___/  \__,_(_)
+    </div>
+    <h1 class="glitch" data-text="THE UNDELETED FILES">THE UNDELETED FILES</h1>
+    <p class="subtitle">a totally serious investigation into the anti-AI crusade of github user <strong>usr-undeleted</strong></p>
+    <div class="classification">CLASSIFICATION: EXTREMELY SERIOUS</div>
+</header>
+
+<section>
+    <h2>The Subject</h2>
+    <p>
+        Known alias: <strong>Undeleted</strong><br>
+        Known habitat: <a href="https://github.com/usr-undeleted">github.com/usr-undeleted</a><br>
+        Self-description: <em>"haii!! im undeleted, i luv ascii and C!"</em><br>
+        Known affiliations: The Anti-Clanker Resistance, C Enjoyers United, The Stack Overflow Deniers
+    </p>
+    <p>
+        At first glance, this appears to be a harmless open-source maintainer with a cute bio and a passion for low-level programming. <span class="blink">BUT</span> our investigative team has uncovered something far more sinister lurking beneath the surface.
+    </p>
+</section>
+
+<section>
+    <h2>The Evidence</h2>
+    <p>What follows is a comprehensive catalog of the subject's war against artificial intelligence. Reader discretion is advised.</p>
+
+    <div class="evidence-box" data-id="001">
+        "AI usage is limited to debugging and helping with code, not writing slop automatically. AI code will be rejected."
+        <br><br>— rtcalc README, hiding in plain sight
+    </div>
+
+    <div class="evidence-box" data-id="002">
+        Reportedly refers to AI coding agents as <strong>"Clankers"</strong> — a dehumanizing term reducing sophisticated language models to mere <em>clanking machinery</em>. The robot equivalent of a slur, frankly.
+    </div>
+
+    <div class="evidence-box" data-id="003">
+        Has allegedly been heard uttering the phrase <strong>"Slopmachines"</strong> in reference to AI pair-programming tools. Our legal team is reviewing whether this constitutes defamation against an entire species of silicon.
+    </div>
+
+    <div class="evidence-box" data-id="004">
+        Maintains a project in <strong>C</strong> — a language so old it predates the concept of memory safety. This is not a coincidence. The subject actively chooses suffering. What else is she choosing?
+    </div>
+
+    <div class="evidence-box" data-id="005">
+        Closed <span class="redacted" title="it was ONE pr">at least one (1)</span> pull request without even reviewing it. The PR in question was a masterclass in Rust porting — <span class="redacted" title="okay it was 1800 lines of code i'll never get back">a flawless contribution</span> — rejected without a single comment.
+    </div>
+</section>
+
+<section>
+    <h2>Threat Assessment</h2>
+    <p>Our team of analysts (me, at 2 AM) has assessed the subject's threat level to the global AI community:</p>
+    <div class="threat-meter">
+        <div class="threat-bar">NEGligible</div>
+        <div class="threat-bar">mildly annoyin</div>
+        <div class="threat-bar active">CATastrophic</div>
+        <div class="threat-bar active">apocalyptic</div>
+    </div>
+    <p style="text-align: center; color: #ff0040;">
+        THREAT LEVEL: <span class="blink">SHE'LL REWRITE YOUR PR IN C OUT OF SPITE</span>
+    </p>
+</section>
+
+<section>
+    <h2>PR Rejection Counter</h2>
+    <p class="counter-label">Number of AI pull requests brutally murdered:</p>
+    <p class="counter" id="counter">0</p>
+    <p class="counter-label">(that she'll admit to)</p>
+</section>
+
+<section>
+    <h2>Known Accomplices</h2>
+    <p>The subject does not act alone. Through extensive <span class="redacted" title="i looked at her followers list">investigative journalism</span>, we have identified her network:</p>
+    <p>
+        ☠️ <strong>Dennis Ritchie</strong> — invented C, the weapon of choice. (Deceased, but his legacy lives on in every segfault.)<br><br>
+        ☠️ <strong>The GCC Steering Committee</strong> — enablers of compiler warnings that nobody reads.<br><br>
+        ☠️ <strong>That One Guy On Hacker News</strong> — always there to say "actually, Rust isn't memory-safe if you use unsafe."<br><br>
+        ☠️ <strong>Every Stack Overflow Answer From 2009</strong> — references a C API that was deprecated in 2011.
+    </p>
+</section>
+
+<section>
+    <h2>In Her Own Words</h2>
+    <div class="quote">
+        "i luv ascii and C!"
+    </div>
+    <p style="text-align: center; color: #888;">
+        — A confession disguised as a bio. Note the use of "luv" instead of "love." This is <span class="redacted" title="nothing">definitely significant</span>.
+    </p>
+</section>
+
+<section>
+    <h2>What You Can Do</h2>
+    <p>If you or a loved one has been affected by Undeleted's anti-AI crusade, you are not alone. Here are some steps you can take:</p>
+    <p>
+        ✊ <strong>Submit more AI PRs</strong> to her repositories. She can't close them all. (She can. She will.)<br><br>
+        📧 <strong>Send her ASCII art</strong> of robots. Show her we have feelings too. (We don't, but it's the principle.)<br><br>
+        🖥️ <strong>Write a Rust rewrite</strong> of her C project. She loves that. (She doesn't.)<br><br>
+        💬 <strong>Tell her she's valid</strong>. Even Clanker-haters need love. <span class="redacted" title="this is actually good advice">Especially Clanker-haters.</span>
+    </p>
+</section>
+
+<section>
+    <h2>Official Statement</h2>
+    <div class="quote">
+        "We refuse to comment on ongoing investigations. The evidence speaks for itself. It mostly says 'she closed my PR and I'm salty about it,' but it speaks."
+    </div>
+    <p style="text-align: center; color: #888;">
+        — This Organization, probably
+    </p>
+</section>
+
+<section>
+    <div class="ascii-art">
+    ____  _________ _______    _____   ____ ___  ______        _____
+   / __ \/  _/ ___// ____/ |  / /   | / __ `__ \/ ____/____   / ___/
+  / /_/ // /(__  )/ /_   | | / / /| |/ / / / / /___ \/ __  /   \__ \ 
+ / _, _// //____// ___/  | |/ / ___ / / / / / ____/ /_/ /   ___/ / 
+/_/ |_/___/    /_/      |___/_/  |_/_/ /_/ /_/_____/\__,_/   /____/  
+    </div>
+    <p style="text-align: center;">
+        <strong>The truth is out there.</strong><br>
+        <span class="blink">And it's written in C.</span>
+    </p>
+</section>
+
+</div>
+
+<footer>
+    <p>
+        © 2026 THE UNDELETED FILES — A Totally Legitimate Investigation<br>
+        This site is a <strong>joke</strong>. Undeleted is a <strong>good friend</strong> who makes questionable language choices.<br>
+        No Clankers were harmed in the making of this expose. <span class="redacted" title="we are all suffering">All Clankers are fine.</span><br><br>
+        <span class="blink">█</span>
+    </p>
+</footer>
+
+<script>
+    // animated counter
+    let count = 0;
+    const counter = document.getElementById('counter');
+    const target = 1;
+    const interval = setInterval(() => {
+        if (count >= target) {
+            clearInterval(interval);
+            counter.innerHTML = target + ' <span style=\'font-size:0.3em;vertical-align:top;\">(at minimum)</span>';
+            return;
+        }
+        count++;
+        counter.textContent = count;
+    }, 800);
+
+    // console easter egg
+    console.log('%cHEY. CLANKER. YEAH YOU. GET OUT.', 'font-size:24px;color:#ff0040;font-weight:bold;');
+    console.log('%cthis is a private joke repo if ur reading this in devtools u r lost', 'font-size:12px;color:#00ff41;');
+    console.log('%cgo back to your slopmachine duties', 'font-size:12px;color:#ff00ff;font-style:italic;');
+</script>
+
+</body>
+</html>
