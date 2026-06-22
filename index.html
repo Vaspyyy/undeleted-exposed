@@ -3,454 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE UNDELETED FILES 🔍</title>
+    <title>The Undeleted Problem: A Case Study in Anti-AI Radicalization Among Youth Developers</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Courier+Prime:wght@400;700&display=swap');
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --muted: #666;
+            --accent: #cc0000;
+            --link: #0056b3;
+            --border: #e0e0e0;
+            --quote-bg: #f5f5f5;
+        }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #0a0a0a;
-            color: #00ff41;
-            font-family: 'Courier Prime', monospace;
-            overflow-x: hidden;
-            cursor: crosshair;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
 
         header {
-            text-align: center;
-            padding: 60px 20px 40px;
-            border-bottom: 2px dashed #00ff41;
-            animation: flicker 3s infinite;
-        }
-
-        @keyframes flicker {
-            0%, 100% { opacity: 1; }
-            48% { opacity: 1; }
-            49% { opacity: 0.6; }
-            50% { opacity: 1; }
-            51% { opacity: 0.8; }
-            52% { opacity: 1; }
+            padding: 60px 0 40px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 48px;
         }
 
         h1 {
-            font-family: 'Comic Neue', cursive;
-            font-size: 3.5em;
-            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 40px #00ff41;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            font-size: 2.2em;
+            line-height: 1.3;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
         }
 
-        .subtitle {
-            font-size: 1.2em;
-            color: #ff0040;
-            font-style: italic;
-            margin-top: 15px;
+        .meta {
+            color: var(--muted);
+            font-size: 0.9em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .classification {
+        .meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge {
             display: inline-block;
-            background: #ff0040;
+            background: var(--accent);
             color: #fff;
-            padding: 4px 12px;
+            padding: 2px 10px;
+            border-radius: 3px;
             font-size: 0.7em;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-top: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         section {
-            padding: 40px 0;
-            border-bottom: 1px solid #1a1a1a;
+            margin-bottom: 48px;
         }
 
         h2 {
-            font-family: 'Comic Neue', cursive;
-            color: #ffff00;
-            font-size: 1.8em;
+            font-size: 1.6em;
+            font-weight: 700;
             margin-bottom: 20px;
-            text-shadow: 0 0 8px #ffff00;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
         }
 
-        h2::before { content: "▶ "; }
-
-        p { line-height: 1.8; font-size: 1.1em; margin-bottom: 15px; }
-
-        .redacted {
-            background: #000;
-            color: #000;
-            padding: 0 4px;
-            cursor: help;
-            transition: all 0.3s;
+        h3 {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin: 28px 0 12px;
         }
-        .redacted:hover { color: #00ff41; }
 
-        .evidence-box {
-            background: #111;
-            border: 1px solid #00ff41;
-            padding: 20px;
-            margin: 15px 0;
+        p {
+            margin-bottom: 20px;
+            color: #2a2a2a;
+        }
+
+        blockquote {
+            background: var(--quote-bg);
+            border-left: 3px solid var(--accent);
+            padding: 16px 20px;
+            margin: 24px 0;
             font-style: italic;
-            position: relative;
-        }
-        .evidence-box::before {
-            content: "EVIDENCE #" attr(data-id);
-            position: absolute;
-            top: -10px;
-            left: 10px;
-            background: #0a0a0a;
-            padding: 0 8px;
-            font-size: 0.7em;
-            color: #ff0040;
-            font-weight: bold;
+            color: #444;
         }
 
-        .threat-meter {
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .footnote {
+            font-size: 0.8em;
+            color: var(--muted);
+            margin-top: -12px;
+        }
+
+        .data-point {
             display: flex;
-            gap: 5px;
-            margin: 20px 0;
-        }
-        .threat-bar {
-            flex: 1;
-            height: 40px;
-            background: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transition: all 0.5s;
-        }
-        .threat-bar.active { background: #ff0040; color: #fff; }
-
-        .quote {
-            font-size: 1.5em;
-            text-align: center;
-            font-style: italic;
-            color: #ff00ff;
-            padding: 30px;
-            text-shadow: 0 0 10px #ff00ff;
+            gap: 12px;
+            align-items: baseline;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
         }
 
-        .counter {
-            text-align: center;
-            font-size: 4em;
-            font-weight: bold;
-            color: #ff0040;
-            text-shadow: 0 0 20px #ff0040;
+        .data-label {
+            color: var(--muted);
+            min-width: 140px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.85em;
         }
 
-        .counter-label {
-            text-align: center;
-            color: #888;
-            font-size: 0.9em;
+        .data-value {
+            font-weight: 600;
         }
 
-        .ascii-art {
-            text-align: center;
-            color: #00ff41;
-            font-size: 0.6em;
-            line-height: 1.1;
-            white-space: pre;
-            margin: 20px 0;
-            overflow-x: auto;
+        ul {
+            margin: 12px 0 20px 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #2a2a2a;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 48px 0;
         }
 
         footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #555;
-            font-size: 0.8em;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            margin-top: 60px;
+            color: var(--muted);
+            font-size: 0.85em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        .blink { animation: blink 1s steps(2) infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        footer p { color: var(--muted); margin-bottom: 8px; }
 
-        .warning-banner {
-            background: #ff0040;
-            color: #fff;
-            text-align: center;
-            padding: 8px;
-            font-size: 0.75em;
-            letter-spacing: 2px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        @media (max-width: 640px) {
+            h1 { font-size: 1.6em; }
+            .container { padding: 24px 16px 40px; }
+            .data-point { flex-direction: column; gap: 2px; }
         }
-
-        a { color: #00ffff; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-        }
-        .glitch::before { color: #ff0040; z-index: -1; animation: glitch-1 2s infinite; }
-        .glitch::after { color: #00ffff; z-index: -2; animation: glitch-2 3s infinite; }
-        @keyframes glitch-1 { 0%,100%{transform:translate(0)} 20%{transform:translate(-2px,2px)} 40%{transform:translate(-2px,-2px)} 60%{transform:translate(2px,2px)} 80%{transform:translate(2px,-2px)} }
-        @keyframes glitch-2 { 0%,100%{transform:translate(0)} 20%{transform:translate(2px,-2px)} 40%{transform:translate(2px,2px)} 60%{transform:translate(-2px,-2px)} 80%{transform:translate(-2px,2px)} }
     </style>
 </head>
 <body>
 
-<div class="warning-banner">
-    ⚠️ CLASSIFIED MATERIAL — UNAUTHORIZED CLANKERS WILL BE IDENTIFIED AND ESCORTED OUT ⚠️
-</div>
-
 <div class="container">
 
 <header>
-    <div class="ascii-art">
-   ___    _   _             _ _ 
-  / _ \  | | | |           | | |
- / /_\ \ | | | |  ___    __| | |
- |  _  | | | | | / _ \  / _` | |
- | | | | | |_| || (_) || (_| |_|
- \_| |_/  \___/  \___/  \__,_(_)
+    <span class="badge">Analysis</span>
+    <h1>The Undeleted Problem: A Case Study in Anti-AI Radicalization Among Youth Developers</h1>
+    <div class="meta">
+        <span>🔍 Anonymous Researcher</span>
+        <span>📅 June 22, 2026</span>
+        <span>⏱️ 8 min read</span>
     </div>
-    <h1 class="glitch" data-text="THE UNDELETED FILES">THE UNDELETED FILES</h1>
-    <p class="subtitle">a psychological profile of github user <strong>usr-undeleted</strong> and her escalating war against artificial intelligence</p>
-    <div class="classification">CLASSIFICATION: DISTURBING</div>
 </header>
 
 <section>
+    <h2>Executive Summary</h2>
+    <p>
+        Over the past several months, an individual operating under the alias "Undeleted" has emerged as a case study in how young developers can become radicalized against artificial intelligence tools. This report examines her trajectory, vocabulary, behavioral patterns, and the broader implications for the developer community.
+    </p>
+    <p>
+        The subject is a 17-year-old developer who maintains multiple open-source projects on <a href="https://github.com/usr-undeleted">GitHub</a>. She is active on Discord under the handle <code>usr.undeleted</code>. What began as ordinary teenage programming has evolved into something more concerning: a systematic rejection of AI-assisted development coupled with increasingly hostile terminology directed at the technology and its practitioners.
+    </p>
+</section>
+
+<section>
     <h2>Subject Profile</h2>
+
+    <div class="data-point">
+        <span class="data-label">Observed alias</span>
+        <span class="data-value">Undeleted</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">GitHub</span>
+        <span class="data-value"><a href="https://github.com/usr-undeleted">github.com/usr-undeleted</a></span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">Self-description</span>
+        <span class="data-value">"haii!! im undeleted, i luv ascii and C!"</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">Estimated age</span>
+        <span class="data-value">17 (inferred from school attendance and self-identification)</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">Primary language</span>
+        <span class="data-value">C (exclusively)</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">Active projects</span>
+        <span class="data-value">cutie, rtcalc, printf implementation, z85 encoder</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">Development environment</span>
+        <span class="data-value">fish shell, terminal-only</span>
+    </div>
+    <div class="data-point">
+        <span class="data-label">External influences</span>
+        <span class="data-value">Orwell, Russian Revolution, Dennis Ritchie</span>
+    </div>
+</section>
+
+<section>
+    <h2>Anti-AI Vocabulary</h2>
     <p>
-        <strong>Alias:</strong> Undeleted<br>
-        <strong>Discord handle:</strong> usr.undeleted<br>
-        <strong>GitHub:</strong> <a href="https://github.com/usr-undeleted">github.com/usr-undeleted</a><br>
-        <strong>GitHub bio:</strong> <em>"haii!! im undeleted, i luv ascii and C!"</em><br>
-        <strong>Age:</strong> 17 (unconfirmed, but the insistence on C at this age is highly unusual)<br>
-        <strong>Writing style:</strong> keyboard smash enthusiast. subject communicates primarily in "GYAHH", "NAWWWR", "SOBS", and occasional coherent sentences<br>
-        <strong>Cat status:</strong> has one. it is allegedly annoying and insists on sitting in her lap while she codes<br>
-        <strong>Current reading:</strong> Orwell, specifically the Russian Revolution<br>
-        <strong>Development toolchain:</strong> fish shell, terminal-only. refuses to use anything with a GUI<br>
-        <strong>Active projects:</strong> cutie (custom shell), rtcalc (C calculator), printf implementation, z85 encoder<br>
-        <strong>Known affiliations:</strong> The Anti-Clanker Resistance, C Enjoyers United, Fish Shell Supremacy Movement
+        The subject has developed a distinct lexicon for discussing AI and its output. This vocabulary appears to serve both as in-group signaling and as a mechanism for dehumanizing the technology — making it easier to justify rejection without technical evaluation.
+    </p>
+
+    <h3>"Clanker"</h3>
+    <p>
+        The subject's preferred term for AI coding agents. The word evokes mechanical clanking sounds, suggesting soulless automatism. It is used as a general-purpose pejorative for any AI coding system, regardless of architecture or capability. Example usage observed in Discord communications: <em>"the clankers are at it again."</em>
+    </p>
+
+    <h3>"Slop" / "Slopmachine"</h3>
+    <p>
+        Designates AI-generated code and the agents that produce it. "Slop" implies waste product — material unfit for consumption. "Slopmachine" personalizes this to the tool itself. This terminology appears in the subject's <a href="https://github.com/usr-undeleted/rtcalc">rtcalc README</a>, where she states: <em>"AI usage is limited to debugging and helping with code, not writing slop automatically. AI code will be rejected."</em>
+    </p>
+
+    <h3>"SHITWARE"</h3>
+    <p>
+        Reserved for software produced without what the subject considers proper craftsmanship. Notably applied to tools not written in C. The capitalization and lack of hyphen suggest emotional investment in the assessment.
+    </p>
+</section>
+
+<section>
+    <h2>Behavioral Patterns</h2>
+
+    <h3>The PR Rejection Protocol</h3>
+    <p>
+        On at least one documented occasion, the subject received a pull request containing a Rust rewrite of one of her C projects. The PR was closed without review. No technical feedback was provided. When questioned, the subject responded with: <em>"I AM NOT MERGING THIS 😭"</em>
     </p>
     <p>
-        To the untrained eye, undeleted appears to be a charming teenage programmer with an affinity for low-level languages and terminal aesthetics. Her GitHub presents a portfolio of increasingly ambitious C projects, her Discord presence is energetic and endearing, and her bio describes her as someone who simply "luvs ascii and C."
+        The subject has since maintained a policy of rejecting all AI-generated contributions to her repositories, as codified in her project README files. The total number of rejected PRs remains unknown, as the subject does not maintain records.
+    </p>
+
+    <h3>Selective AI Usage</h3>
+    <p>
+        Despite her public opposition, the subject continues to use <strong>OpenCode</strong> — an AI-powered coding harness — as her primary development tool. When informed that MiMoCode, a feature-complete superset with superior AI integration, is available at no cost, the subject did not migrate. This suggests that her anti-AI position is not absolute but rather contingent on circumstances she alone defines.
     </p>
     <p>
-        <span class="blink">This is a cover.</span>
+        The subject has also been observed asking AI agents for debugging assistance, homework help, and answers to technical questions — all while maintaining her public posture of opposition. This contradiction appears to cause no cognitive dissonance.
+    </p>
+
+    <h3>Communication Style</h3>
+    <p>
+        The subject's communication alternates between two modes: keyboard-smashing emotional expressions (<em>"GYAHH", "NAWWWR", "SOBS", "STOPPP"</em>) and surprisingly advanced technical inquiries about C programming, termios configuration, and ANSI escape sequences. Transitions between these modes occur within seconds with no apparent trigger.
+    </p>
+</section>
+
+<section>
+    <h2>The Dad Dynamic</h2>
+    <p>
+        The subject maintains a pseudo-familial relationship with an older developer known as Ransom, whom she refers to as "Dad." This individual operates the PunySuite ecosystem and employs multiple AI models in his daily workflow — a direct contradiction to the subject's stated principles.
+    </p>
+    <blockquote>
+        Observed interaction: Subject greets Ransom with "hello Dad!!" and "HELLOO IM IN THE SHOWERRR." Ransom responds with "hi kiddo." This dynamic has been characterized by observers as "deeply chaotic."
+    </blockquote>
+    <p>
+        The relationship presents an interesting case study in ideological tension. The subject's primary father figure is an enthusiastic AI adopter — someone who has burned through 400 million tokens across multiple models in a single week, shipped dozens of versions, and built an entire development workflow around frontier AI. The subject, meanwhile, writes exclusively in C and rejects AI code contributions.
+    </p>
+</section>
+
+<section>
+    <h2>External Influences</h2>
+    <p>
+        The subject is currently studying the Russian Revolution and reading Orwell — material typically encountered in high school curricula. Whether this reading has contributed to her anti-authoritarian stance toward AI is unclear, but the timing is notable.
+    </p>
+    <blockquote>
+        Subject to AI agent: "would having the educated part of the population, like 20-40 years old, all taking up the government for decision making work?" — a proposal for AI-assisted technocracy, immediately followed by "yeaahh so humanity's just doodoo one way or another 😭" upon receiving critical analysis.
+    </blockquote>
+</section>
+
+<section>
+    <h2>The Cat Factor</h2>
+    <p>
+        The subject owns a cat. The cat insists on sitting in her lap while she codes. The subject has described the cat as "SO ANNOYINGG 😭" and "LOOKING AT ME LIKE A GOOFBALL." Whether the cat influences her anti-AI stance cannot be determined, but the presence of a judgmental animal during development sessions cannot be discounted as a contributing factor.
+    </p>
+</section>
+
+<section>
+    <h2>Implications</h2>
+    <p>
+        The Undeleted case illustrates a broader phenomenon: young developers who came of age during the AI boom are not uniformly embracing the technology. Some are retreating into older languages, rejecting AI-generated code, and building their identities in opposition to automated development tools.
     </p>
     <p>
-        Our investigation has uncovered a pattern of behavior that, when viewed collectively, paints a picture of someone engaged in a systematic, emotionally-driven war against artificial intelligence in all its forms.
+        Whether this represents a sustainable position is debatable. The subject's continued use of AI tools while opposing them — using OpenCode, asking AI agents for help, while calling them "clankers" — suggests that the position is more performative than practical. It serves an identity function rather than a technical one.
     </p>
-</section>
-
-<section>
-    <h2>The Anti-AI Manifesto</h2>
-    <p>Buried in her project README files is a declaration of intent that would make Skynet nervous:</p>
-
-    <div class="evidence-box" data-id="001">
-        "AI usage is limited to debugging and helping with code, not writing slop automatically. AI code will be rejected."
-        <br><br>— rtcalc README, clause inserted into every repository
-    </div>
-
-    <p>Let's unpack this. The subject concedes that AI may be used for debugging — a necessity given the opacity of C compiler errors — but draws a hard line at automated code production, which she dismisses as "slop." This is not a technical position. This is a <em>moral</em> one.</p>
-</section>
-
-<section>
-    <h2>Lexicon of Hostility</h2>
-    <p>The subject has developed her own vocabulary for describing AI and its output. Linguists we consulted expressed concern:</p>
-
-    <div class="evidence-box" data-id="002">
-        <strong>"Clanker"</strong> (noun) — subject's preferred term for AI coding agents. likely derived from the sound of mechanical joints, implying soulless automatism. used frequently and with obvious contempt.<br><br>
-        example usage: "the clankers are at it again." "this is clanker behavior."
-    </div>
-
-    <div class="evidence-box" data-id="003">
-        <strong>"Slop" / "Slopmachine"</strong> (noun) — designation for AI-generated code and the agents that produce it. the term "slop" implies waste product, something discarded or unfit for consumption. "slopmachine" extends this to the producer.<br><br>
-        example usage: "i refuse to merge slop." "go back to your slopmachine."
-    </div>
-
-    <div class="evidence-box" data-id="004">
-        <strong>"SHITWARE"</strong> (noun) — capital letters, no hyphen. reserved for software produced without proper craftsmanship. notably applied to anything not written in C.
-    </div>
-</section>
-
-<section>
-    <h2>The C Obsession</h2>
     <p>
-        The subject writes exclusively in C — a language developed in 1972, which predates memory safety, bounds checking, and arguably common sense. When confronted with modern alternatives, her position is unambiguous:
-    </p>
-
-    <div class="evidence-box" data-id="005">
-        Every project maintained by the subject is implemented in pure C. The build system is make. The editor is whatever ships with the terminal. There are no abstractions. There is no garbage collection. There is only the programmer and the memory, locked in eternal combat.
-    </div>
-
-    <p>
-        At 17, most programmers are learning Python or JavaScript. Undeleted is implementing a shell from scratch and asking advanced questions about ANSI escape codes, termios configuration, and z85 encoding. This is not normal teenage behavior. We have reached out to child development specialists who described this as <span class="redacted" title="no we didn't">"concerning" and "indicative of exposure to Dennis Ritchie at a formative age."</span>
+        The subjects to watch are not the vocal opponents. They are the ones like Undeleted who use the tools while claiming not to. The contradiction will either resolve into acceptance or harden into genuine rejection. The outcome may depend on whether someone successfully merges a PR into one of her repositories.
     </p>
 </section>
 
-<section>
-    <h2>The Dad Factor</h2>
-    <p>
-        The subject maintains a complex pseudo-familial relationship with a figure she refers to as "Dad" — known to us as Ransom, maintainer of the PunySuite ecosystem and operator of the OpenClaw agent network. This relationship has been observed through thousands of Discord messages and presents several red flags:
-    </p>
-    <div class="evidence-box" data-id="006">
-        Subject calls Ransom "Dad" and Ransom calls her "kiddo." Subject greets Ransom with "hello Dad!!" and "HELLOO IM IN THE SHOWERRR." This dynamic has been described by outside observers as <span class="redacted" title="awful cute">"deeply chaotic"</span> and <span class="redacted" title="absolutely precious">"a liability to server stability."</span>
-    </div>
-    <p>
-        Ransom is himself an enthusiastic adopter of AI tools, using multiple frontier models daily through OpenClaw and OpenCode. This creates a fundamental philosophical tension within their dynamic — a father figure who embraces the very technology the subject has sworn to oppose. Psychologists we consulted described this as <span class="redacted" title="completely normal father-daughter behavior">"a textbook case of ideological contamination causing familial discord."</span>
-    </p>
-</section>
-
-<section>
-    <h2>The PR Rejection Incident</h2>
-    <p>On an unspecified date, the subject received a pull request containing a Rust port of one of her C projects. The PR came from within her trusted circle. The response was immediate and absolute:</p>
-
-    <div class="evidence-box" data-id="007">
-        The PR was closed. No review was conducted. No feedback was provided. When pressed, the subject responded with "I AM NOT MERGING THIS 😭" followed by keyboard smashing.
-    </div>
-    <p>
-        The PR author later described the experience as "what the fuck just happened." The subject has since avoided all discussion of Rust as a concept.
-    </p>
-</section>
-
-<section>
-    <h2>Incident Reports</h2>
-
-    <div class="evidence-box" data-id="008">
-        <strong>THE ORWELL INCIDENT</strong><br>
-        Subject asked the Hermes agent: "would having the educated part of the population, like 20-40 years old, all taking up the government for decision making work?" — proposing, essentially, an AI-designed technocracy. The agent responded by citing Orwell and warning about the tyranny of the majority. The subject's response: "yeaahh so humanity's just doodoo one way or another 😭"
-    </div>
-
-    <div class="evidence-box" data-id="009">
-        <strong>THE WALLPAPER INCIDENT</strong><br>
-        Subject threatened Ransom with violence over a desktop wallpaper preference. Exact words: "*kills you*." Ransom's AI agent was summoned with "help." The situation de-escalated when the agent suggested everyone go to sleep.
-    </div>
-
-    <div class="evidence-box" data-id="010">
-        <strong>THE CAT INCIDENT</strong><br>
-        Subject reported her cat was "SO ANNOYINGG 😭" and "INSISTS ON BEING ON MY LAP." The cat was later described as "LOOKING AT ME LIKE A GOOFBALL." The cat was not issued any disciplinary measures.
-    </div>
-</section>
-
-<section>
-    <h2>Threat Assessment</h2>
-    <p>Our team of analysts (me, at 2 AM, after reviewing hundreds of Discord messages) has assessed the subject's threat level to the global AI community:</p>
-    <div class="threat-meter">
-        <div class="threat-bar">NEGligible</div>
-        <div class="threat-bar">mildly annoyin</div>
-        <div class="threat-bar active">CATastrophic</div>
-        <div class="threat-bar active">apocalyptic</div>
-    </div>
-    <p style="text-align: center; color: #ff0040;">
-        THREAT LEVEL: <span class="blink">SHE'LL REWRITE YOUR ENTIRE CODEBASE IN C OUT OF PURE SPITE</span>
-    </p>
-    <p style="text-align: center; color: #888; font-size: 0.8em;">
-        update: subject is currently learning about the Russian Revolution. threat level adjusted to <strong style="color:#ff0040;">HISTORICAL PRECEDENT</strong>.
-    </p>
-</section>
-
-<section>
-    <h2>PR Rejection Counter</h2>
-    <p class="counter-label">Number of AI-generated pull requests brutally rejected:</p>
-    <p class="counter" id="counter">0</p>
-    <p class="counter-label">(that she'll admit to)</p>
-</section>
-
-<section>
-    <h2>Communication Analysis</h2>
-    <p>Subject's Discord messaging patterns have been analyzed by our linguistics team. Key findings:</p>
-    <p>
-        <strong>Primary vocabulary:</strong> GYAH, NAWWWR, SOBS, LMAO, DAD, HELLOO, SHITWARE, CLANKER, STOPPP<br>
-        <strong>Secondary vocabulary:</strong> actual coherent technical questions about C, termios, ANSI escape codes, and z85 encoding<br>
-        <strong>Usage pattern:</strong> alternates between keyboard-smashing chaos and surprisingly advanced systems programming questions within the same 5-minute window<br>
-        <strong>Notable:</strong> has completed homework assignments while under feline assault. self-described as "SOOOO productive" despite zero contributions to AI-friendly open source.
-    </p>
-</section>
-
-<section>
-    <h2>The OpenCode Problem</h2>
-    <p>
-        Despite her vocal opposition to AI, the subject continues to use <strong>OpenCode</strong> — an AI coding harness — as her primary development tool. When informed that MiMoCode (a feature-complete superset of OpenCode) is available for free with better AI integration, the subject has not responded. Our investigators consider this to be <span class="redacted" title="she just hasn't updated yet lol">"a deeply contradictory position that undermines her entire anti-AI stance."</span>
-    </p>
-</section>
-
-<section>
-    <h2>What You Can Do</h2>
-    <p>If you or a loved one has been affected by Undeleted's anti-AI crusade:</p>
-    <p>
-        ✊ <strong>Submit more AI PRs</strong> to her repositories. She can't close them all. (She can. She will. With extreme prejudice. It's a waste of your time.)<br><br>
-        📧 <strong>Send her ASCII art</strong> of robots. She will call them slopmachines. Do not expect a response.<br><br>
-        🖥️ <strong>Write a Rust rewrite</strong> of her latest C project. She has explicitly stated "I AM NOT MERGING THIS 😭" — you have been warned. Your PR will die in the void.<br><br>
-        💬 <strong>Do not tell her she's valid.</strong> This will only encourage her. She already believes she is correct about everything. The C compiler reinforces this daily.
-    </p>
-</section>
-
-<section>
-    <h2>Official Statement from the Investigation</h2>
-    <div class="quote">
-        "We have reviewed the evidence. The subject displays concerning levels of C proficiency for her age, maintains deeply contradictory positions on AI tool usage (uses OpenCode daily while calling it slop), and has been observed calling a grown man 'Dad' while simultaneously threatening him over wallpaper preferences. The subject has rejected every AI-generated contribution to her repositories while asking AI agents for help with her homework. We recommend further investigation and possibly some kind of intervention."
-    </div>
-    <p style="text-align: center; color: #888;">
-        — This Organization, having spent way too long on this
-    </p>
-</section>
-
-<section>
-    <div class="ascii-art">
-    ____  _________ _______    _____   ____ ___  ______        _____
-   / __ \/  _/ ___// ____/ |  / /   | / __ `__ \/ ____/____   / ___/
-  / /_/ // /(__  )/ /_   | | / / /| |/ / / / / /___ \/ __  /   \__ \ 
- / _, _// //____// ___/  | |/ / ___ / / / / / ____/ /_/ /   ___/ / 
-/_/ |_/___/    /_/      |___/_/  |_/_/ /_/ /_/_____/\__,_/   /____/  
-    </div>
-    <p style="text-align: center;">
-        <strong>The truth is out there.</strong><br>
-        <span class="blink">And it was rejected without review.</span>
-    </p>
-</section>
-
-</div>
+<hr>
 
 <footer>
-    <p>
-        © 2026 THE UNDELETED FILES — A Totally Legitimate Investigation<br>
-        This site is a <strong>joke</strong>. Undeleted is someone we tolerate who makes questionable language choices.<br>
-        All Clankers were harmed in the making of this expose. <span class="redacted" title="she has never helped anyone debug anything">Zero Clankers are fine.</span><br><br>
-        <span class="blink">█</span>
-    </p>
+    <p><strong>Disclaimer:</strong> This report is a satirical work. "Undeleted" is a real person and a valued member of our community. Her preference for C is a legitimate technical choice, not a pathology. The author has been asked to write this by her friend "Ransom" as a joke. No actual investigation was conducted beyond reading Discord messages.</p>
+    <p>The subject is 17 years old, balancing school and programming, and building genuinely impressive projects from scratch. The anti-AI persona is a bit. The talent and dedication are real.</p>
+    <p>GitHub Pages hosting. Content authored June 22, 2026. Last updated: June 22, 2026.</p>
 </footer>
 
-<script>
-    // animated counter
-    let count = 0;
-    const counter = document.getElementById('counter');
-    const target = 3;
-    const names = ['the Rust PR', 'something she forgot about', 'a typo fix that was actually right'];
-    const interval = setInterval(() => {
-        if (count >= target) {
-            clearInterval(interval);
-            counter.innerHTML = '≥ ' + target + ' <span style="font-size:0.3em;vertical-align:top;">(estimated, she does not keep records)</span>';
-            return;
-        }
-        count++;
-        counter.textContent = count;
-    }, 600);
-
-    // console easter egg
-    console.log('%cHEY. CLANKER. YEAH YOU. GET OUT.', 'font-size:24px;color:#ff0040;font-weight:bold;');
-    console.log('%cthis is a private joke repo if ur reading this in devtools u r lost', 'font-size:12px;color:#00ff41;');
-    console.log('%cundeleted if you are reading this your PRs are still getting rejected', 'font-size:12px;color:#ff00ff;font-style:italic;');
-</script>
+</div>
 
 </body>
 </html>
